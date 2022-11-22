@@ -7,7 +7,7 @@ export default class LoginUiComponent extends Component {
   @tracked remember = 0;
 
   get disableSubmit() {
-  // if either value is empty we don't want to allow submitting the form
+  //if either value is empty we don't want to allow submitting the form
     return !this.UserName.length || !this.PassWord.length;
   }
 

@@ -1,9 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
+/* import fof the google icons used in the site */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* body specific htm formatting */
 body {
   background-color: #f7f7f7;
 }
 
+/* table cell formatting */
+td {
+  border: 1px solid #606060;
+}
+
+/* Sets screen parameters */
 .screen {
   display: table;
   position: relative;
@@ -13,14 +29,17 @@ body {
   width: 100%;
 }
 
+/* ----------- LOGIN ------------*/
+
+/* used for username/password input */
 .user-input {
   height: 40px;
   width: 55%;
   line-height: 5vh;
   margin: 0 auto;
-  /*border: 1px solid green;*/
 }
 
+/* used for login field labels */
 .field-label {
   float: left;
   width: 40px;
@@ -29,55 +48,35 @@ body {
   text-align: center;
   display: table-cell;
   vertical-align: middle;
-  /*border: 1px solid red;*/
 }
 
-.field {
-  color: fafafa;
-}
-
+/* Provides css for the login submit button */
 .submit-field {
   float: left;
   width: 82px;
   text-align: right;
 }
 
+/* used for the remember me login field */
 .check-field {
   color: #c0c0c0;
   font-size: 14px;
   float: left;
 }
 
-.header-links {
-  color: white;
-  font-family: 'Oswald', sans-serif;
-  font-size: 20px;
-  float: right;
-  padding-right: 50px;
-}
-
-.site-title {
-  padding-left: 50px;
-  width: 350px;
-  color: white;
-  float: left;
-  font-family: 'Oswald', sans-serif;
-  font-size: 35px;
-}
-
-.header-content-area {
+/* formatting for login screen horizontal arrangements */
+.login-cell {
   position: relative;
-  top: -58px;
-  left: -10px;
-  margin: 50px auto;
-  width: 101%;
-  height: 10vh;
-  line-height: 10vh;
-  box-shadow: 5px 10px 100px #a0a0a0;
-  background-color: black;
-  overflow: hidden;
+  left: -2px;
+  top: -2px;
+  background-color: white;
+  width: 475px;
+  height: 65vh;
+  line-height: 65vh;
+  border: 0px;
 }
 
+/* login content box */
 .content-area {
   margin: -50px auto;
   width: 50%;
@@ -91,6 +90,44 @@ body {
   background-repeat: no-repeat;
 }
 
+/* -------------- HEADER ------------*/
+
+/* format for the header links */
+.header-links {
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  float: right;
+  padding-right: 50px;
+}
+
+/* formattin for the site title */
+.site-title {
+  padding-left: 50px;
+  width: 350px;
+  color: white;
+  float: left;
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
+}
+
+/* formatting for the links and site title area */
+.header-content-area {
+  position: relative;
+  top: -58px;
+  left: -10px;
+  margin: 50px auto;
+  width: 101%;
+  height: 10vh;
+  line-height: 10vh;
+  box-shadow: 5px 10px 100px #a0a0a0;
+  background-color: black;
+  overflow: hidden;
+}
+
+/*------------------PROJECT DASHBOARD ----------------*/
+
+/* formatting for project background box */
 .project-background {
   width: 98%;
   height: 96%;
@@ -102,17 +139,7 @@ body {
   opacity: .7;
 }
 
-.cell {
-  position: relative;
-  left: -2px;
-  top: -2px;
-  background-color: white;
-  width: 475px;
-  height: 65vh;
-  line-height: 65vh;
-  border: 0px;
-}
-
+/* formatting for the header in the project box */
 .content-header {
   position: relative;
   top: -93%;
@@ -124,6 +151,7 @@ body {
   opacity: 1;
 }
 
+/* formatting for the username and specialty in the content header */
 .content-username-specialty {
   position: relative;
   font-family: 'Oswald', sans-serif;
@@ -135,6 +163,7 @@ body {
   text-align: center;
 }
 
+ /* formatting for the user role in the content header */
 .content-role {
   position: relative;
   font-family: 'Oswald', sans-serif;
@@ -146,6 +175,7 @@ body {
   text-align: center;
 }
 
+/* formatting for the project listing box */
 .project-listing {
   position: relative;
   top: -115vh;
@@ -158,6 +188,7 @@ body {
   text-align: center;
 }
 
+/* formatting for the project listing text */
 .listing-text {
   position: relative;
   top: 0vh;
@@ -170,10 +201,9 @@ body {
   z-index: 12;
 }
 
-td {
-  border: 1px solid #606060;
-}
+/* ------------------- FOOTER -------------*/
 
+/* formatting for the footer */
 .footer {
   font-family: 'Oswald', sans-serif;
   text-align: center;
@@ -182,12 +212,4 @@ td {
   margin-right: auto;
   position: relative;
   bottom: -18vh;
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 200,
-  'GRAD' 0,
-  'opsz' 24
 }

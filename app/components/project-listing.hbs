@@ -1,11 +1,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+{{!Screen class that sets window scaling}}
 <div class="screen">
+
+  {{!Define content area in center of screen}}
   <div class="content-area">
+
+    {{!Define project background box}}
     <div class="project-background"></div>
 
+    {{!Define content area header}}
     <div class="content-header">
-
         <div class="content-username-specialty">
           {{this.username}} - {{this.specialty}}
         </div>
@@ -15,6 +20,7 @@
         </div>
     </div>
 
+    {{!Display all pertinent projects}}
     <div class="project-listing">
       <div class="listing-text">
         <table width="100%">
@@ -40,6 +46,5 @@
         </table>
       </div>
     </div>
-
   </div>
 </div>

@@ -4,7 +4,8 @@ module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'crypto-conductor-front',
     environment,
-    rootURL: '/',
+    rootURL: '/static/ember/',
+    baseURL: '/',
     locationType: 'history',
     EmberENV: {
       FEATURES: {

@@ -13,4 +13,5 @@ Router.map(function () {
   this.route('projectManagement');
   this.route('projectDetail');
   this.route('scoringDashboard');
+  this.route('contactPage');
 });

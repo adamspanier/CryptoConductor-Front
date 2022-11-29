@@ -24,8 +24,10 @@
             <div class="field">
               <Input
                 aria-label="username"
+                id = "un"
                 @type="text"
                 @value={{this.UserName}}
+                {{on "input" this.validateNames}}
               />
             </div>
           </div>
@@ -39,8 +41,10 @@
             <div class="field">
               <Input
                 aria-label="password"
+                id = 'pw'
                 @type="password"
                 @value={{this.PassWord}}
+                {{on "input" this.validateNames}}
               />
             </div>
           </div>
@@ -65,9 +69,9 @@
               <Input
                 aria-label = "submit"
                 disabled = {{this.disableSubmit}}
-                @type="submit"
+                @type="button"
                 @value="Login"
-                {{on "click" this.onSubmit}}
+                {{on "click" this.submitData}}
               />
             </div>
           </div>

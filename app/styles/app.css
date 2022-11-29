@@ -14,9 +14,10 @@ body {
   background-color: #f7f7f7;
 }
 
-/* table cell formatting */
-td {
-  border: 1px solid #606060;
+/* Set formatting for links */
+a {
+  color: white;
+  text-decoration: none;
 }
 
 /* Sets screen parameters */
@@ -207,9 +208,175 @@ td {
 .footer {
   font-family: 'Oswald', sans-serif;
   text-align: center;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+  bottom: -10vh;
+}
+
+/*------------------Account Management ----------------*/
+
+/* formatting for account background box */
+.account-background {
+  width: 98%;
+  height: 96%;
+  background-color: black;
+  margin: auto;
   position: relative;
-  bottom: -18vh;
+  top: 2%;
+  color: white;
+  opacity: .7;
+}
+
+/* formatting for the account information box */
+.account-info {
+  position: relative;
+  top: -115vh;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  margin: auto;
+  width: 98%;
+  height: 83%;
+  text-align: center;
+}
+
+/* formatting for the Account Management Console title */
+.content-title {
+  position: relative;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  margin: auto;
+  height: 20px;
+  top: -50%;
+  color: white;
+  text-align: center;
+}
+
+/* formatting for the account form*/
+.account-info-text {
+  position: relative;
+  top: 12vh;
+  height: 70%;
+  width: 70%;
+  padding: 20px;
+  margin: auto;
+  line-height: normal;
+  color: white;
+  z-index: 12;
+  text-align: left;
+}
+
+/* formatting for the drop down menus */
+.account-drops {
+  width: 150px;
+}
+
+/* formatting for the account management table */
+#account-table {
+  margin: auto;
+}
+
+/* formatting for the action buttons */
+.mod-button{
+  position: relative;
+  top: 5vh;
+  text-align: center;
+}
+
+/*------------------Contact ----------------*/
+
+/* Sets screen parameters */
+.screen-contact {
+  display: table;
+  position: relative;
+  top: -10px;
+  left: 0;
+  line-height: 0px;
+  width: 100%;
+}
+
+/* formatting for contact background box */
+.contact-background {
+  margin: auto;
+  position: relative;
+  top: -4vh;
+  width: 50%;
+  height: 55vh;
+  line-height: 55vh;
+  box-shadow: 5px 5px 100px #a0a0a0;
+  background-color: #fdfdfd;
+  opacity: 1;
+}
+
+/* formatting for the contact window title */
+.contact-content-title {
+  position: relative;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  margin: auto;
+  height: 20px;
+  top: -56vh;
+  color: black;
+  text-align: center;
+}
+
+/* formatting for the contact info box */
+.contact-info {
+  position: absolute;
+  top: -1vh;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  margin: auto;
+  width: 100%;
+  height: 90%;
+  line-height: normal;
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+#contact-table {
+  position: relative;
+  margin: auto;
+  top: 3vh;
+  z-index: 20;
+}
+
+#contact-table td {
+  vertical-align: top;
+  text-align: right;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+#submit-contact {
+  margin: auto;
+  text-align: center;
+  padding-right: 30px;
+}
+
+/*------------------------- Project Management ----------------*/
+
+/* formatting for the project information box */
+.project-info {
+  position: relative;
+  top: -130vh;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  margin: auto;
+  width: 98%;
+  height: 83%;
+  text-align: center;
+  vertical-align: top;
+}
+
+/* formatting for the account management table */
+#project-management-table {
+  margin: auto;
+}
+
+#project-management-table td {
+  padding-right: 20px;
+  padding-bottom: 10px;
 }

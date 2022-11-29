@@ -1,8 +1,14 @@
 {{!Table containing the site links}}
 <table>
   <tr>
-    <td width="100px" align="center" style="border: 0px">Project</td>
-    <td width="100px" align="center" style="border: 0px">Account</td>
-    <td width="100px" align="center" style="border: 0px">Contact</td>
+    <td width="100px" align="center" style="border: 0px">
+      <LinkTo @route="projectDashboard">Project</LinkTo>
+    </td>
+    <td width="100px" align="center" style="border: 0px">
+      <LinkTo @route="accountManagement">Account</LinkTo>
+    </td>
+    <td width="100px" align="center" style="border: 0px">
+      <LinkTo @route="contactPage">Contact</LinkTo>
+    </td>
   </tr>
 </table>

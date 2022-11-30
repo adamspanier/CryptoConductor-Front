@@ -2,14 +2,20 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { debug } from '@ember/debug';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { router } from '@ember/service';
 
 export default class LoginUiComponent extends Component {
+  @service authManager;
+  @service router;
   @tracked UserName = 'username here';
   @tracked PassWord = 'password here';
   @tracked remember = 0;
+  @tracked anonStatus = true;
 
-  init() {
-    console.log('test');
+  constructor(owner, args) {
+    super(owner, args);
+    this.authManager.print()
   }
 
   get disableSubmit() {
@@ -25,12 +31,18 @@ export default class LoginUiComponent extends Component {
 
   @action
   submitData() {
-    var login = {
+    var loginData = {
       username: this.UserName,
       password: this.PassWord,
       remember: this.remember,
     };
 
-    console.log(login);
+    //pass into authManager
+    this.authManager.login(loginData)
+  }
+
+  @action
+  redirectToDashboard() {
+    this.router.transitionTo('projectDashboard')
   }
 }

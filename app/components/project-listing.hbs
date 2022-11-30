@@ -3,38 +3,46 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
-  {{!Define content area in center of screen}}
-  <div class="content-area">
+  {{#if this.authManager.isLoggedIn}}
 
-    {{!Define project background box}}
-    <div class="project-background"></div>
+    {{!Define content area in center of screen}}
+    <div class="content-area">
 
-    {{!Define content area header}}
-    <div class="content-header">
-        <div class="content-username-specialty">
-          {{this.username}} - {{this.specialty}}
+      {{!Define project background box}}
+      <div class="project-background"></div>
+
+      {{!Define content area header}}
+      <div class="content-header">
+          <div class="content-username-specialty">
+            {{this.authManager.username}} - {{this.specialty}}
+          </div>
+
+          <div class="content-role">
+            {{this.authManager.usergroup}} Console
+          </div>
+      </div>
+
+      {{!Display all pertinent projects}}
+      <div class="project-listing">
+        <div class="listing-text">
+          <table width="100%" border="1px">
+            {{#each this.testProjects as |proj|}}
+              <tr>
+                <td>{{proj.id}}</td>
+                <td width="300px">{{proj.name}}</td>
+                {{#if this.isLead}}
+                  <td><LinkTo @route="projectManagement">Project Dashboard</LinkTo></td>
+                {{/if}}
+                <td>Project Entries</td>
+              </tr>
+            {{/each}}
+
+          </table>
         </div>
-
-        <div class="content-role">
-          {{this.role}} Console
-        </div>
-    </div>
-
-    {{!Display all pertinent projects}}
-    <div class="project-listing">
-      <div class="listing-text">
-        <table width="100%" border="1px">
-          {{#each this.testProjects as |proj|}}
-            <tr>
-              <td>{{proj.id}}</td>
-              <td width="300px">{{proj.name}}</td>
-              <td><LinkTo @route="projectManagement">Project Dashboard</LinkTo></td>
-              <td>Project Entries</td>
-            </tr>
-          {{/each}}
-
-        </table>
       </div>
     </div>
-  </div>
+    {{else}}
+      test
+      {{this.redirectToLogin}}
+    {{/if}}
 </div>

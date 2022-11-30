@@ -3,81 +3,87 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
-  {{!Define content area in center of screen}}
-  <div class="content-area">
+  {{#unless this.authManager.isLoggedIn}}
 
-    {{!Define two cell login table, one side with login, other with pic}}
-    <table class="login-table"><tr>
+    {{!Define content area in center of screen}}
+    <div class="content-area">
 
-      {{!Contains login content}}
-      <td class="login-cell">
+      {{!Define two cell login table, one side with login, other with pic}}
+      <table class="login-table"><tr>
 
-        {{!Define login form}}
-        <form>
+        {{!Contains login content}}
+        <td class="login-cell">
 
-          {{!Username input div}}
-          <div class="user-input">
-            <div class="field-label">
-              <span class="material-symbols-outlined">person</span>
+          {{!Define login form}}
+          <form>
+
+            {{!Username input div}}
+            <div class="user-input">
+              <div class="field-label">
+                <span class="material-symbols-outlined">person</span>
+              </div>
+
+              <div class="field">
+                <Input
+                  aria-label="username"
+                  id = "un"
+                  @type="text"
+                  @value={{this.UserName}}
+                  {{on "input" this.validateNames}}
+                />
+              </div>
             </div>
 
-            <div class="field">
-              <Input
-                aria-label="username"
-                id = "un"
-                @type="text"
-                @value={{this.UserName}}
-                {{on "input" this.validateNames}}
-              />
-            </div>
-          </div>
+            {{!Password input div}}
+            <div class="user-input">
+              <div class="field-label">
+                <span class="material-symbols-outlined">key</span>
+              </div>
 
-          {{!Password input div}}
-          <div class="user-input">
-            <div class="field-label">
-              <span class="material-symbols-outlined">key</span>
-            </div>
-
-            <div class="field">
-              <Input
-                aria-label="password"
-                id = 'pw'
-                @type="password"
-                @value={{this.PassWord}}
-                {{on "input" this.validateNames}}
-              />
-            </div>
-          </div>
-
-          {{!Remember Me div}}
-          <div class="user-input">
-            <div class="field-label">
-              <span class="material-symbols-outlined">check</span>
+              <div class="field">
+                <Input
+                  aria-label="password"
+                  id = 'pw'
+                  @type="password"
+                  @value={{this.PassWord}}
+                  {{on "input" this.validateNames}}
+                />
+              </div>
             </div>
 
-            <div class="check-field">
-              <Input
-                aria-label="remember"
-                @type="checkbox"
-                @checked = {{this.remember}}
-              />
-              remember me
+            {{!Remember Me div}}
+            <div class="user-input">
+              <div class="field-label">
+                <span class="material-symbols-outlined">check</span>
+              </div>
+
+              <div class="check-field">
+                <Input
+                  aria-label="remember"
+                  @type="checkbox"
+                  @checked = {{this.remember}}
+                />
+                remember me
+              </div>
+
+              {{!Submit div div}}
+              <div class="submit-field">
+                <Input
+                  aria-label = "submit"
+                  disabled = {{this.disableSubmit}}
+                  @type="button"
+                  @value="Login"
+                  {{on "click" this.submitData}}
+                />
+              </div>
             </div>
 
-            {{!Submit div div}}
-            <div class="submit-field">
-              <Input
-                aria-label = "submit"
-                disabled = {{this.disableSubmit}}
-                @type="button"
-                @value="Login"
-                {{on "click" this.submitData}}
-              />
-            </div>
-          </div>
-
-        </form>
-      </td><td style="border: 0px"></td>
-    </tr></table>
-  </div>
+          </form>
+        </td><td style="border: 0px"></td>
+      </tr></table>
+    </div>
+  {{else}}
+    logged in. Redirect.
+    {{this.redirectToDashboard}}
+  {{/unless}}
 </div>

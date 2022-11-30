@@ -2,8 +2,12 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { debug } from '@ember/debug';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { router } from '@ember/service';
 
 export default class AccountInformationComponent extends Component {
+  @service authManager;
+  @service router;
   @tracked userFirst = 'Adam';
   @tracked userLast = 'Spanier';
   @tracked userMi = 'M';
@@ -73,5 +77,10 @@ export default class AccountInformationComponent extends Component {
     };
 
     console.log(record);
+  }
+
+  @action
+  redirectToLogin() {
+    this.router.transitionTo('login');
   }
 }

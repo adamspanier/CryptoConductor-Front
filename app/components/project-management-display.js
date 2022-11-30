@@ -2,10 +2,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { debug } from '@ember/debug';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { router } from '@ember/service';
 
 export default class ProjectManagementDisplayComponent extends Component {
+  @service authManager;
+  @service router;
   @tracked projectTitle = 'CryptoThing';
-  @tracked description = 'Add description'
+  @tracked description = 'Add description';
   @tracked update = 'Update'; //Used if role == leader
   @tracked delete = 'Delete'; //Used if role == leader
 
@@ -22,33 +26,30 @@ export default class ProjectManagementDisplayComponent extends Component {
   ];
 
   @tracked testClientList = [
-    {'name': 'Bob'},
-    {'name': 'Bill'},
-    {'name': 'Jim'},
-    {'name': 'Phil'},
-    {'name': 'Sharon'},
-    {'name': 'Jill'}
+    { name: 'Bob' },
+    { name: 'Bill' },
+    { name: 'Jim' },
+    { name: 'Phil' },
+    { name: 'Sharon' },
+    { name: 'Jill' },
   ];
 
   @tracked testDenialList = [
-    {'name': 'BadGuy1'},
-    {'name': 'BadGuy2'},
-    {'name': 'BadGuy3'},
-    {'name': 'BadGuy4'},
-    {'name': 'BadGuy5'},
-    {'name': 'BadGuy6'}
+    { name: 'BadGuy1' },
+    { name: 'BadGuy2' },
+    { name: 'BadGuy3' },
+    { name: 'BadGuy4' },
+    { name: 'BadGuy5' },
+    { name: 'BadGuy6' },
   ];
 
-  @tracked public = [
-    {'status': 'Public'},
-    {'status': 'Private'}
-  ];
+  @tracked public = [{ status: 'Public' }, { status: 'Private' }];
 
   @tracked status = [
-    {'status': 'Open'},
-    {'status': 'In progress'},
-    {'status': 'Closed'},
-    {'status': 'Final review'}
+    { status: 'Open' },
+    { status: 'In progress' },
+    { status: 'Closed' },
+    { status: 'Final review' },
   ];
 
   @action
@@ -78,6 +79,11 @@ export default class ProjectManagementDisplayComponent extends Component {
       status: sta.value,
     };
 
-    console.log(projectData)
+    console.log(projectData);
+  }
+
+  @action
+  redirectToLogin() {
+    this.router.transitionTo('login');
   }
 }

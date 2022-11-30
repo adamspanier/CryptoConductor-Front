@@ -3,122 +3,127 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
-  {{!Define content area in center of screen}}
-  <div class="content-area">
+  {{#if this.authManager.isLoggedIn}}
 
-    {{!Define account background box}}
-    <div class="account-background"></div>
+    {{!Define content area in center of screen}}
+    <div class="content-area">
 
-    {{!Define content area header}}
-    <div class="content-header">
-        <div class="content-title">
-          Project Management Console
-        </div>
-    </div>
+      {{!Define account background box}}
+      <div class="account-background"></div>
 
-    {{!Display account information}}
-    <div class="project-info">
+      {{!Define content area header}}
+      <div class="content-header">
+          <div class="content-title">
+            Project Management Console
+          </div>
+      </div>
 
-      {{!Setup inner div for arrangement of account information}}
-      <div class="account-info-text">
-        <table id="project-management-table">
-          <tr>
-            <td width="200px">Project Title:</td>
-            <td>
-              <div class="field">
-                <Input
-                  aria-label="ProjectTitle"
-                  id = "pt"
-                  @type="type"
-                  size = "23"
-                  @value={{this.projectTitle}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Specialties:</td>
-              <select class="account-drops">
-                  {{#each this.testSpecialties as |spec|}}
-                    <option>{{spec.name}}</option>
-                  {{/each}}
-              </select>
-            <td></td>
-          </tr>
-          <tr>
-            <td width="100px" rowspan="8" style="vertical-align: top;">Description:</td>
-            <td width="100px" rowspan="8" style="vertical-align: top;">
-              <div class="field">
-                <Textarea
-                  aria-label="description"
-                  id = "d"
-                  @value={{this.description}}
-                  rows="15"
-                  cols="23"
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Niches:</td>
-              <select class="account-drops">
-                  {{#each this.testNiches as |niche|}}
-                    <option>{{niche.name}}</option>
-                  {{/each}}
-              </select>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Clients:</td>
-            <td>
-              <select class="account-drops">
-                  {{#each this.testClientList as |client|}}
-                    <option>{{client.name}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Denials:</td>
-            <td>
-              <select class="account-drops">
-                  {{#each this.testDenialList as |deny|}}
-                    <option>{{deny.name}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Availability:</td>
-            <td>
-              <select class="account-drops" id="ava">
-                  {{#each this.public as |pub|}}
-                    <option>{{pub.status}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr><td>Status:</td>
-            <td>
-              <select class="account-drops" id="sta">
-                  {{#each this.status as |status|}}
-                    <option>{{status.status}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr><td>&nbsp;</td></tr>
-          <tr><td>&nbsp;</td></tr>
-          <tr><td>&nbsp;</td></tr>
-        </table>
+      {{!Display account information}}
+      <div class="project-info">
 
-        <div class="mod-button">
-          <Input
-            aria-label="update"
-            @type="button"
-            @value={{this.update}}
-            {{on "click" this.sendData}}
-          />
+        {{!Setup inner div for arrangement of account information}}
+        <div class="account-info-text">
+          <table id="project-management-table">
+            <tr>
+              <td width="200px">Project Title:</td>
+              <td>
+                <div class="field">
+                  <Input
+                    aria-label="ProjectTitle"
+                    id = "pt"
+                    @type="type"
+                    size = "23"
+                    @value={{this.projectTitle}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Specialties:</td>
+                <select class="account-drops">
+                    {{#each this.testSpecialties as |spec|}}
+                      <option>{{spec.name}}</option>
+                    {{/each}}
+                </select>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="100px" rowspan="8" style="vertical-align: top;">Description:</td>
+              <td width="100px" rowspan="8" style="vertical-align: top;">
+                <div class="field">
+                  <Textarea
+                    aria-label="description"
+                    id = "d"
+                    @value={{this.description}}
+                    rows="15"
+                    cols="23"
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Niches:</td>
+                <select class="account-drops">
+                    {{#each this.testNiches as |niche|}}
+                      <option>{{niche.name}}</option>
+                    {{/each}}
+                </select>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Clients:</td>
+              <td>
+                <select class="account-drops">
+                    {{#each this.testClientList as |client|}}
+                      <option>{{client.name}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Denials:</td>
+              <td>
+                <select class="account-drops">
+                    {{#each this.testDenialList as |deny|}}
+                      <option>{{deny.name}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Availability:</td>
+              <td>
+                <select class="account-drops" id="ava">
+                    {{#each this.public as |pub|}}
+                      <option>{{pub.status}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr><td>Status:</td>
+              <td>
+                <select class="account-drops" id="sta">
+                    {{#each this.status as |status|}}
+                      <option>{{status.status}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+          </table>
+
+          <div class="mod-button">
+            <Input
+              aria-label="update"
+              @type="button"
+              @value={{this.update}}
+              {{on "click" this.sendData}}
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {{else}}
+    {{this.redirectToLogin}}
+  {{/if}}
 </div>

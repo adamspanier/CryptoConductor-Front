@@ -10,5 +10,10 @@
     <td width="100px" align="center" style="border: 0px">
       <LinkTo @route="contactPage">Contact</LinkTo>
     </td>
+    {{#if this.authManager.isLoggedIn}}
+      <td width="100px" align="center" style="border: 0px">
+        <span {{on "click" this.test}} style="cursor: pointer;">Logout</span>
+      </td>
+    {{/if}}
   </tr>
 </table>

@@ -3,150 +3,155 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
-  {{!Define content area in center of screen}}
-  <div class="content-area">
+  {{#if this.authManager.isLoggedIn}}
 
-    {{!Define account background box}}
-    <div class="account-background"></div>
+    {{!Define content area in center of screen}}
+    <div class="content-area">
 
-    {{!Define content area header}}
-    <div class="content-header">
-        <div class="content-title">
-          Account Management Console
-        </div>
-    </div>
+      {{!Define account background box}}
+      <div class="account-background"></div>
 
-    {{!Display account information}}
-    <div class="account-info">
+      {{!Define content area header}}
+      <div class="content-header">
+          <div class="content-title">
+            Account Management Console
+          </div>
+      </div>
 
-      {{!Setup inner div for arrangement of account information}}
-      <div class="account-info-text">
-        <table id="account-table">
-          <tr>
-            <td>User First:</td>
-            <td>
-              <div class="field">
-                <Input
-                  aria-label="UserFirst"
-                  id = "uf"
-                  @type="type"
-                  @value={{this.userFirst}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td width="100px">Specialty:</td>
-              <select class="account-drops" id="spec">
-                  {{#each this.testSpecialties as |spec|}}
-                    <option>{{spec.name}}</option>
-                  {{/each}}
-              </select>
-            <td></td>
-          </tr>
-          <tr>
-            <td width="100px">User Last:</td>
-            <td width="200px">
-              <div class="field">
-                <Input
-                  aria-label="UserLast"
-                  id = "ul"
-                  @type="text"
-                  @value={{this.userLast}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Niche:</td>
-              <select class="account-drops" id="nich">
-                  {{#each this.testNiches as |niche|}}
-                    <option>{{niche.name}}</option>
-                  {{/each}}
-              </select>
-            <td></td>
-          </tr>
-          <tr>
-            <td>User MI:</td>
-            <td>
-              <div class="field">
-                <Input
-                  aria-label="UserMi"
-                  id = "um"
-                  @type="text"
-                  @value={{this.userMi}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Role:</td>
-            <td>
-              <select class="account-drops" id="rol">
-                  {{#each this.testRoles as |role|}}
-                    <option>{{role.name}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Username:</td>
-            <td>
-              <div class="field">
-                <Input
-                  aria-label="UserName"
-                  id = "un"
-                  @type="text"
-                  @value={{this.username}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Projects:</td>
-            <td>
-              <select class="account-drops" id="pro">
-                  {{#each this.testProjects as |proj|}}
-                    <option>{{proj.name}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>User Balance:</td>
-            <td>
-              <div class="field">
-                <Input
-                  aria-label="UserBalance"
-                  id = "ub"
-                  @type="text"
-                  @value={{this.userBalance}}
-                  {{on "input" this.validateNames}}
-                />
-              </div>
-            </td>
-            <td>Active:</td>
-            <td>
-              <select class="account-drops" id="act">
-                  {{#each this.testActive as |act|}}
-                    <option>{{act.status}}</option>
-                  {{/each}}
-              </select>
-            </td>
-          </tr>
-        </table>
+      {{!Display account information}}
+      <div class="account-info">
 
-        <div class="mod-button">
-          <Input
-            aria-label="update"
-            @type="button"
-            @value={{this.update}}
-            {{on "click" this.updateRecord}}
-          />
-          <Input
-            aria-label="delete"
-            @type="button"
-            @value={{this.delete}}
-            {{on "click" this.print}}
-          />
+        {{!Setup inner div for arrangement of account information}}
+        <div class="account-info-text">
+          <table id="account-table">
+            <tr>
+              <td>User First:</td>
+              <td>
+                <div class="field">
+                  <Input
+                    aria-label="UserFirst"
+                    id = "uf"
+                    @type="type"
+                    @value={{this.userFirst}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td width="100px">Specialty:</td>
+                <select class="account-drops" id="spec">
+                    {{#each this.testSpecialties as |spec|}}
+                      <option>{{spec.name}}</option>
+                    {{/each}}
+                </select>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="100px">User Last:</td>
+              <td width="200px">
+                <div class="field">
+                  <Input
+                    aria-label="UserLast"
+                    id = "ul"
+                    @type="text"
+                    @value={{this.userLast}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Niche:</td>
+                <select class="account-drops" id="nich">
+                    {{#each this.testNiches as |niche|}}
+                      <option>{{niche.name}}</option>
+                    {{/each}}
+                </select>
+              <td></td>
+            </tr>
+            <tr>
+              <td>User MI:</td>
+              <td>
+                <div class="field">
+                  <Input
+                    aria-label="UserMi"
+                    id = "um"
+                    @type="text"
+                    @value={{this.userMi}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Role:</td>
+              <td>
+                <select class="account-drops" id="rol">
+                    {{#each this.testRoles as |role|}}
+                      <option>{{role.name}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Username:</td>
+              <td>
+                <div class="field">
+                  <Input
+                    aria-label="UserName"
+                    id = "un"
+                    @type="text"
+                    @value={{this.username}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Projects:</td>
+              <td>
+                <select class="account-drops" id="pro">
+                    {{#each this.testProjects as |proj|}}
+                      <option>{{proj.name}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>User Balance:</td>
+              <td>
+                <div class="field">
+                  <Input
+                    aria-label="UserBalance"
+                    id = "ub"
+                    @type="text"
+                    @value={{this.userBalance}}
+                    {{on "input" this.validateNames}}
+                  />
+                </div>
+              </td>
+              <td>Active:</td>
+              <td>
+                <select class="account-drops" id="act">
+                    {{#each this.testActive as |act|}}
+                      <option>{{act.status}}</option>
+                    {{/each}}
+                </select>
+              </td>
+            </tr>
+          </table>
+
+          <div class="mod-button">
+            <Input
+              aria-label="update"
+              @type="button"
+              @value={{this.update}}
+              {{on "click" this.updateRecord}}
+            />
+            <Input
+              aria-label="delete"
+              @type="button"
+              @value={{this.delete}}
+              {{on "click" this.print}}
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {{else}}
+    {{this.redirectToLogin}}
+  {{/if}}
 </div>

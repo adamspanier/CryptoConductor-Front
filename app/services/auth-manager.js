@@ -61,8 +61,7 @@ export default class AuthManagerService extends Service {
       });
   }
 
-  //Run queries to get specialty, niche
-
+  //Print function
   print() {
     console.log(this.username);
     console.log(this.userid);

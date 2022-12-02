@@ -15,27 +15,33 @@ export default class ProjectListingComponent extends Component {
   @tracked isLead = false;
   @tracked projects = null;
 
+  // Called on UI instantiation
   constructor(owner, args) {
     super(owner, args);
 
+    // If usergroup is leader, mark lead is true
     if (this.authManager.usergroup == 'Leader') {
       this.isLead = true;
     }
 
+    // Get projects for this user
     this.getProjects();
   }
 
+  // For testing only
   @tracked testProjects = [
     { id: 1, name: 'CryptoThing' },
     { id: 2, name: 'BitStream' },
     { id: 3, name: 'NebulousThing' },
   ];
 
+  // Handler for anonymous requests
   @action
   redirectToLogin() {
     this.router.transitionTo('login');
   }
 
+  // Get project list for current users
   @action
   getProjects() {
     console.log('In Project');
@@ -44,12 +50,13 @@ export default class ProjectListingComponent extends Component {
     var this_username = this.authManager.username;
     console.log('username: ' + this_username);
 
-    this.store.query('user', {
+    // Get user Id
+    this.store.query('project', {
       filter: {
-        username: this_username,
+        search: this_username,
       }
-    }).then(function(user) {
-      console.log(user.id)
+    }).then(function(cu) {
+        console.log(cu)
     });
 
     // KINDA WORKS
@@ -60,9 +67,9 @@ export default class ProjectListingComponent extends Component {
 
     //WORKS
     // User current username to query for ID
-    let cur_user = this.store.findRecord('user', 4)
-      .then(function(user) {
-        console.log(user.id)
-      });
+    //let cur_user = this.store.findRecord('user', 4)
+    //  .then(function(user) {
+    //    console.log(user.type)
+    //  });
   }
 }

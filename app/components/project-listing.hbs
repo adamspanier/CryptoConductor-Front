@@ -30,6 +30,8 @@
               <tr>
                 <td>{{proj.id}}</td>
                 <td width="300px">{{proj.name}}</td>
+
+                {{! Show only if leader }}
                 {{#if this.isLead}}
                   <td><LinkTo @route="projectManagement">Project Dashboard</LinkTo></td>
                 {{/if}}

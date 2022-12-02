@@ -3,6 +3,7 @@ import { attr } from '@ember-data/model';
 import { belongsTo } from '@ember-data/model';
 
 export default class ProjectEntryModel extends Model {
+  // Model defining the fields of a project entry
   @belongsTo('user', { async: true }) user;
   @belongsTo('niche', { async: true }) niche;
   @belongsTo('project', { async: true }) project;

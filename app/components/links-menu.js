@@ -7,8 +7,9 @@ export default class LinksMenuComponent extends Component {
   @service authManager;
   @tracked logout = 'Logout';
 
+  // Calls the logout function in the authManager
   @action
-  test() {
+  logout() {
     var logoutData = {
       username: this.authManager.username,
     };

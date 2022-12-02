@@ -1,25 +1,29 @@
 {{!Table containing the site links}}
 <table>
   <tr>
+    {{! Display if authenticated }}
     {{#if this.authManager.isLoggedIn}}
       <td width="100px" align="center" style="border: 0px">
         <LinkTo @route="projectDashboard">Project</LinkTo>
       </td>
     {{/if}}
 
+    {{! Display if authenticated }}
     {{#if this.authManager.isLoggedIn}}
       <td width="100px" align="center" style="border: 0px">
         <LinkTo @route="accountManagement">Account</LinkTo>
       </td>
     {{/if}}
 
+    {{! Show contact information for anonymous users }}
     <td width="100px" align="center" style="border: 0px">
       <LinkTo @route="contactPage">Contact</LinkTo>
     </td>
-    
+
+    {{! Display if authenticated }}
     {{#if this.authManager.isLoggedIn}}
       <td width="100px" align="center" style="border: 0px">
-        <span {{on "click" this.test}} style="cursor: pointer;">Logout</span>
+        <span {{on "click" this.logout}} style="cursor: pointer;">Logout</span>
       </td>
     {{/if}}
   </tr>

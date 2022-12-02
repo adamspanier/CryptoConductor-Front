@@ -13,22 +13,26 @@ export default class LoginUiComponent extends Component {
   @tracked remember = 0;
   @tracked anonStatus = true;
 
+  // Called when UI is created
   constructor(owner, args) {
     super(owner, args);
     this.authManager.print();
   }
 
+  // Disable the submit button until all fields are filled
   get disableSubmit() {
     //if either value is empty we don't want to allow submitting the form
     return !this.UserName.length || !this.PassWord.length;
   }
 
+  // JS Validation, Sanitization, and Escaping
   @action
   validateNames() {
     un.value = un.value.replace(/[&*<>/';{}]/g, '');
     pw.value = pw.value.replace(/[&*<>/';{}]/g, '');
   }
 
+  // Creates login data and calls login function in authManager
   @action
   submitData() {
     var loginData = {
@@ -41,6 +45,7 @@ export default class LoginUiComponent extends Component {
     this.authManager.login(loginData);
   }
 
+  // Redirect for logged in users
   @action
   redirectToDashboard() {
     this.router.transitionTo('projectDashboard');

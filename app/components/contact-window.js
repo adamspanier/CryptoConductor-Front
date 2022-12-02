@@ -9,6 +9,7 @@ export default class ContactWindowComponent extends Component {
   @tracked message = 'Enter a brief message';
   @tracked send = 'Send';
 
+  // JS Validation, Sanitization, and Escaping
   @action
   validateNames() {
     m.value = m.value.replace(/[&*<>/';{}]/g, '');
@@ -21,6 +22,7 @@ export default class ContactWindowComponent extends Component {
     console.log(e.value);
   }
 
+  // Creates record for sending an email
   @action
   sendEmail() {
     var data = {

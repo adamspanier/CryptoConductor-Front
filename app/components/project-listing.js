@@ -8,16 +8,21 @@ import { router } from '@ember/service';
 export default class ProjectListingComponent extends Component {
   @service authManager;
   @service router;
+  @service store;
   @tracked username = 'Syntax';
   @tracked specialty = 'Cybersecurity';
   @tracked role = 'Knight';
   @tracked isLead = false;
+  @tracked projects = null;
 
   constructor(owner, args) {
     super(owner, args);
-    if(this.authManager.usergroup == 'Leader'){
+
+    if (this.authManager.usergroup == 'Leader') {
       this.isLead = true;
     }
+
+    this.getProjects();
   }
 
   @tracked testProjects = [
@@ -29,5 +34,35 @@ export default class ProjectListingComponent extends Component {
   @action
   redirectToLogin() {
     this.router.transitionTo('login');
+  }
+
+  @action
+  getProjects() {
+    console.log('In Project');
+
+    //get current user ID
+    var this_username = this.authManager.username;
+    console.log('username: ' + this_username);
+
+    this.store.query('user', {
+      filter: {
+        username: this_username,
+      }
+    }).then(function(user) {
+      console.log(user.id)
+    });
+
+    // KINDA WORKS
+    // this.store.queryRecord('user', {}).then(function (user) {
+    //   //let username = user.get('id');
+    //   console.log('User ID:');
+    // });
+
+    //WORKS
+    // User current username to query for ID
+    let cur_user = this.store.findRecord('user', 4)
+      .then(function(user) {
+        console.log(user.id)
+      });
   }
 }

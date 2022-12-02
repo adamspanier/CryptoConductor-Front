@@ -1,15 +1,22 @@
 {{!Table containing the site links}}
 <table>
   <tr>
-    <td width="100px" align="center" style="border: 0px">
-      <LinkTo @route="projectDashboard">Project</LinkTo>
-    </td>
-    <td width="100px" align="center" style="border: 0px">
-      <LinkTo @route="accountManagement">Account</LinkTo>
-    </td>
+    {{#if this.authManager.isLoggedIn}}
+      <td width="100px" align="center" style="border: 0px">
+        <LinkTo @route="projectDashboard">Project</LinkTo>
+      </td>
+    {{/if}}
+
+    {{#if this.authManager.isLoggedIn}}
+      <td width="100px" align="center" style="border: 0px">
+        <LinkTo @route="accountManagement">Account</LinkTo>
+      </td>
+    {{/if}}
+
     <td width="100px" align="center" style="border: 0px">
       <LinkTo @route="contactPage">Contact</LinkTo>
     </td>
+    
     {{#if this.authManager.isLoggedIn}}
       <td width="100px" align="center" style="border: 0px">
         <span {{on "click" this.test}} style="cursor: pointer;">Logout</span>

@@ -11,15 +11,14 @@ export default class AuthManagerService extends Service {
   @tracked userid;
   @tracked isLoggedIn = false;
 
-
   //Go to Django, let Django check current status, then returning interval
   //function is the callback for what to do when the function returns - async
   // this - the reference to the immediate object you are in
   // Get
   init() {
     super.init(...arguments);
-    let authService = this
-    let data = $.get("/session/", function(response) {
+    let authService = this;
+    let data = $.get('/session/', function (response) {
       console.log(response);
       authService.username = response.data.username;
       authService.usergroup = response.data.usergroup;
@@ -32,8 +31,8 @@ export default class AuthManagerService extends Service {
   // Post
   login(loginData) {
     //url, data, success handler
-    let authService = this
-    $.post("/session/", loginData, function(response) {
+    let authService = this;
+    $.post('/session/', loginData, function (response) {
       console.log(response);
       authService.username = response.data.username;
       authService.usergroup = response.data.usergroup;
@@ -45,21 +44,21 @@ export default class AuthManagerService extends Service {
   //delete
   logout(logoutData) {
     const csrftoken = Cookies.get('csrftoken');
-    console.log(logoutData)
-    let authService = this
-    console.log("test")
-    /$.ajax({
-      url: "/session/",
-      type: "DELETE",
-      headers: {'X-CSRFToken': csrftoken},
-      success: function(response) {
-        console.log(response);
-        authService.username = null;
-        authService.usergroup = null;
-        authService.userid = null;
-        authService.isLoggedIn = false;
-      }
-    });
+    console.log(logoutData);
+    let authService = this;
+    console.log('test') /
+      $.ajax({
+        url: '/session/',
+        type: 'DELETE',
+        headers: { 'X-CSRFToken': csrftoken },
+        success: function (response) {
+          console.log(response);
+          authService.username = null;
+          authService.usergroup = null;
+          authService.userid = null;
+          authService.isLoggedIn = false;
+        },
+      });
   }
 
   //Run queries to get specialty, niche
@@ -69,5 +68,4 @@ export default class AuthManagerService extends Service {
     console.log(this.userid);
     console.log(this.isLoggedIn);
   }
-
 }

@@ -15,7 +15,7 @@ export default class LoginUiComponent extends Component {
 
   constructor(owner, args) {
     super(owner, args);
-    this.authManager.print()
+    this.authManager.print();
   }
 
   get disableSubmit() {
@@ -38,11 +38,11 @@ export default class LoginUiComponent extends Component {
     };
 
     //pass into authManager
-    this.authManager.login(loginData)
+    this.authManager.login(loginData);
   }
 
   @action
   redirectToDashboard() {
-    this.router.transitionTo('projectDashboard')
+    this.router.transitionTo('projectDashboard');
   }
 }

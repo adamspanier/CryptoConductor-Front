@@ -3,7 +3,10 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
-  {{#unless this.authManager.isLoggedIn}}
+  {{#if this.authManager.isLoggedIn}}
+    logged in. Redirect.
+    {{this.redirectToDashboard}}
+  {{else}}
 
     {{!Define content area in center of screen}}
     <div class="content-area">
@@ -82,8 +85,5 @@
         </td><td style="border: 0px"></td>
       </tr></table>
     </div>
-  {{else}}
-    logged in. Redirect.
-    {{this.redirectToDashboard}}
-  {{/unless}}
+  {{/if}}
 </div>

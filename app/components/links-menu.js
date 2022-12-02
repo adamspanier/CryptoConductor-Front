@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 
 export default class LinksMenuComponent extends Component {
   @service authManager;
-  @tracked logout = "Logout";
+  @tracked logout = 'Logout';
 
   @action
   test() {

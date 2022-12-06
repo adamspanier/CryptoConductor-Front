@@ -1,4 +1,12 @@
+{{! Put in css under the component }}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+{{!-- {{#each @ptest as |proj|}}
+  {{proj.name}}
+  {{proj.description}}
+  {{proj.status}}
+{{/each}} --}}
+
 
 {{!Screen class that sets window scaling}}
 <div class="screen">
@@ -26,14 +34,20 @@
       <div class="project-listing">
         <div class="listing-text">
           <table width="100%" border="1px">
-            {{#each this.testProjects as |proj|}}
+            {{#each @user_projects as |proj|}}
+
+            {{!-- {{#each @user_projects as |up|}}
+              {{up.name}}
+              {{up.id}}
+            {{/each}} --}}
+
               <tr>
                 <td>{{proj.id}}</td>
                 <td width="300px">{{proj.name}}</td>
 
                 {{! Show only if leader }}
                 {{#if this.isLead}}
-                  <td><LinkTo @route="projectManagement">Project Dashboard</LinkTo></td>
+                  <td><LinkTo @route="projectManagement">{{proj.name}}Dashboard</LinkTo></td>
                 {{/if}}
                 <td>Project Entries</td>
               </tr>

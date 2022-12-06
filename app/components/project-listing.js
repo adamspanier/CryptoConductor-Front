@@ -9,6 +9,7 @@ export default class ProjectListingComponent extends Component {
   @service authManager;
   @service router;
   @service store;
+  @service projectData;
   @tracked username = 'Syntax';
   @tracked specialty = 'Cybersecurity';
   @tracked role = 'Knight';
@@ -23,9 +24,6 @@ export default class ProjectListingComponent extends Component {
     if (this.authManager.usergroup == 'Leader') {
       this.isLead = true;
     }
-
-    // Get projects for this user
-    this.getProjects();
   }
 
   // For testing only
@@ -42,34 +40,34 @@ export default class ProjectListingComponent extends Component {
   }
 
   // Get project list for current users
-  @action
-  getProjects() {
-    console.log('In Project');
-
-    //get current user ID
-    var this_username = this.authManager.username;
-    console.log('username: ' + this_username);
-
-    // Get user Id
-    this.store.query('project', {
-      filter: {
-        search: this_username,
-      }
-    }).then(function(cu) {
-        console.log(cu)
-    });
-
-    // KINDA WORKS
-    // this.store.queryRecord('user', {}).then(function (user) {
-    //   //let username = user.get('id');
-    //   console.log('User ID:');
-    // });
-
-    //WORKS
-    // User current username to query for ID
-    //let cur_user = this.store.findRecord('user', 4)
-    //  .then(function(user) {
-    //    console.log(user.type)
-    //  });
-  }
+  // @action
+  // getProjects() {
+  //   console.log('In Project');
+  //
+  //   //get current user ID
+  //   var this_username = this.authManager.username;
+  //   console.log('username: ' + this_username);
+  //
+  //   // Get user Id
+  //   this.store.query('project', {
+  //     filter: {
+  //       search: this_username,
+  //     }
+  //   }).then(function(cu) {
+  //       console.log(cu)
+  //   });
+  //
+  //   // KINDA WORKS
+  //   // this.store.queryRecord('user', {}).then(function (user) {
+  //   //   //let username = user.get('id');
+  //   //   console.log('User ID:');
+  //   // });
+  //
+  //   //WORKS
+  //   // User current username to query for ID
+  //   //let cur_user = this.store.findRecord('user', 4)
+  //   //  .then(function(user) {
+  //   //    console.log(user.type)
+  //   //  });
+  // }
 }

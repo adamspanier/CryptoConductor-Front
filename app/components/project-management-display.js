@@ -8,6 +8,7 @@ import { router } from '@ember/service';
 export default class ProjectManagementDisplayComponent extends Component {
   @service authManager;
   @service router;
+  @service projectData;
   @tracked projectTitle = 'CryptoThing';
   @tracked description = 'Add description';
   @tracked update = 'Update'; //Used if role == leader

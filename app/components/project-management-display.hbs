@@ -3,6 +3,10 @@
 {{!Screen class that sets window scaling}}
 <div class="screen">
 
+  {{#each @project as |proj|}}
+    {{proj.name}}
+  {{/each}}
+
   {{#if this.authManager.isLoggedIn}}
 
     {{!Define content area in center of screen}}

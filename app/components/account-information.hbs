@@ -25,6 +25,10 @@
         {{!Setup inner div for arrangement of account information}}
         <div class="account-info-text">
 
+          {{#each @user_data.user as |user|}}
+            {{user.groups}}
+          {{#each @user_data.profile as |profile|}}
+
           {{!Setup account table structure}}
           <table id="account-table">
             <tr>
@@ -35,13 +39,13 @@
                     aria-label="UserFirst"
                     id = "uf"
                     @type="type"
-                    @value={{this.userFirst}}
+                    @value={{user.first_name}}
                     {{on "input" this.validateNames}}
                   />
                 </div>
               </td>
               <td width="100px">Specialty:</td>
-                <select class="account-drops" id="spec">
+                <select class="account-drops" id="spec" disabled={{this.isntAdmin}}>
                     {{#each this.testSpecialties as |spec|}}
                       <option>{{spec.name}}</option>
                     {{/each}}
@@ -56,13 +60,13 @@
                     aria-label="UserLast"
                     id = "ul"
                     @type="text"
-                    @value={{this.userLast}}
+                    @value={{user.last_name}}
                     {{on "input" this.validateNames}}
                   />
                 </div>
               </td>
               <td>Niche:</td>
-                <select class="account-drops" id="nich">
+                <select class="account-drops" id="nich" disabled={{this.isntAdmin}}>
                     {{#each this.testNiches as |niche|}}
                       <option>{{niche.name}}</option>
                     {{/each}}
@@ -77,14 +81,14 @@
                     aria-label="UserMi"
                     id = "um"
                     @type="text"
-                    @value={{this.userMi}}
+                    @value={{profile.mi}}
                     {{on "input" this.validateNames}}
                   />
                 </div>
               </td>
               <td>Role:</td>
               <td>
-                <select class="account-drops" id="rol">
+                <select class="account-drops" id="rol" disabled={{this.isntAdmin}}>
                     {{#each this.testRoles as |role|}}
                       <option>{{role.name}}</option>
                     {{/each}}
@@ -99,14 +103,15 @@
                     aria-label="UserName"
                     id = "un"
                     @type="text"
-                    @value={{this.username}}
+                    disabled={{this.isntAdmin}}
+                    @value={{user.username}}
                     {{on "input" this.validateNames}}
                   />
                 </div>
               </td>
               <td>Projects:</td>
               <td>
-                <select class="account-drops" id="pro">
+                <select class="account-drops" id="pro" disabled={{this.isntAdmin}}>
                     {{#each this.testProjects as |proj|}}
                       <option>{{proj.name}}</option>
                     {{/each}}
@@ -121,7 +126,8 @@
                     aria-label="UserBalance"
                     id = "ub"
                     @type="text"
-                    @value={{this.userBalance}}
+                    disabled={{this.isntAdmin}}
+                    @value={{profile.balance}}
                     {{on "input" this.validateNames}}
                   />
                 </div>
@@ -136,7 +142,8 @@
               </td>
             </tr>
           </table>
-
+          {{/each}}
+          {{/each}}
           <div class="mod-button">
             <Input
               aria-label="update"
@@ -148,7 +155,7 @@
               aria-label="delete"
               @type="button"
               @value={{this.delete}}
-              {{on "click" this.print}}
+              {{on "click" this.updateRecord}}
             />
           </div>
         </div>

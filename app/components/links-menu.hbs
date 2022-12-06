@@ -23,7 +23,7 @@
     {{! Display if authenticated }}
     {{#if this.authManager.isLoggedIn}}
       <td width="100px" align="center" style="border: 0px">
-        <span {{on "click" this.logout}} style="cursor: pointer;">Logout</span>
+        <span {{on "click" this.logoutLink}} style="cursor: pointer;">Logout</span>
       </td>
     {{/if}}
   </tr>

@@ -9,7 +9,7 @@ export default class LinksMenuComponent extends Component {
 
   // Calls the logout function in the authManager
   @action
-  logout() {
+  logoutLink() {
     var logoutData = {
       username: this.authManager.username,
     };

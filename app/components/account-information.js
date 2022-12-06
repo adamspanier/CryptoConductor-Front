@@ -13,8 +13,10 @@ export default class AccountInformationComponent extends Component {
   @tracked userMi = 'M';
   @tracked username = 'Syntax';
   @tracked userBalance = '$0.00';
+  @tracked isLead = false;
   @tracked update = 'Update'; //Used if role == leader
   @tracked delete = 'Delete'; //Used if role == leader
+  @tracked isntAdmin = true;
 
   // For testing purposes
   @tracked testSpecialties = [
@@ -52,6 +54,22 @@ export default class AccountInformationComponent extends Component {
     { status: 'Sabbatical' },
   ];
 
+  // Called on UI instantiation
+  constructor(owner, args) {
+    super(owner, args);
+
+    // If usergroup is leader, mark lead is true
+    if (this.authManager.usergroup == 'Leader') {
+      this.isLead = true;
+    }
+
+    if (this.authManager.usergroup == 'Leader') {
+      this.isntAdmin = false;
+    }
+
+    console.log(this.isntAdmin);
+  }
+
   // Basic print function
   @action
   print() {
@@ -72,11 +90,11 @@ export default class AccountInformationComponent extends Component {
   @action
   updateRecord() {
     var record = {
-      first: this.userFirst,
-      mi: this.userMi,
-      last: this.userLast,
-      username: this.username,
-      balance: this.balance,
+      first: uf.value,
+      mi: um.value,
+      last: ul.value,
+      username: un.value,
+      balance: ub.value,
       specialty: spec.value,
       niche: nich.value,
       role: rol.value,

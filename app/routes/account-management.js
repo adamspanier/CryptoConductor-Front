@@ -7,6 +7,7 @@ export default class AccountManagementRoute extends Route {
   @service store;
   @service authManager;
 
+  // Collects user and profile data for each user
   model() {
     return RSVP.hash({
       user: this.store.findAll('user'),

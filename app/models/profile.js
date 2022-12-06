@@ -4,6 +4,7 @@ import { belongsTo } from '@ember-data/model';
 import { hasMany } from '@ember-data/model';
 
 export default class ProfileModel extends Model {
+  //Model defining profile data
   @belongsTo('user', { async: true, inverse: null }) users;
   @attr('string') mi;
   @attr('number') balance;

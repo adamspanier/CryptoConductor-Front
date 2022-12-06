@@ -6,17 +6,14 @@ import Cookies from 'ember-cli-js-cookie';
 import { service } from '@ember/service';
 
 export default class AuthManagerService extends Service {
-  //Store state here
+  //Store authentication state here
   @tracked username;
   @tracked usergroup;
   @tracked userid;
   @service router;
   @tracked isLoggedIn = false;
 
-  //Go to Django, let Django check current status, then returning interval
-  //function is the callback for what to do when the function returns - async
-  // this - the reference to the immediate object you are in
-  // Get
+  // Get current session cookie
   init() {
     super.init(...arguments);
     let authService = this;
@@ -31,7 +28,7 @@ export default class AuthManagerService extends Service {
     console.log(data);
   }
 
-  // Post
+  // Post creds to the server
   login(loginData) {
     const csrftoken = Cookies.get('csrftoken');
     let authService = this;
@@ -44,7 +41,7 @@ export default class AuthManagerService extends Service {
     });
   }
 
-  //delete
+  // Delete session token and logout
   logout(logoutData) {
     var csrftoken = Cookies.get('csrftoken');
     let authService = this;
@@ -64,7 +61,7 @@ export default class AuthManagerService extends Service {
     this.router.transitionTo('login');
   }
 
-  //Print function
+  //Helper print function
   print() {
     console.log('AUTH USERNAME: ' + this.username);
     console.log('AUTH ID: ' + this.userid);

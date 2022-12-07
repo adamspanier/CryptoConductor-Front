@@ -14,9 +14,4 @@ export default class AccountManagementRoute extends Route {
       profile: this.store.findAll('profile'),
     });
   }
-
-  @action
-  redirectToLogin() {
-    this.router.transitionTo('login');
-  }
 }

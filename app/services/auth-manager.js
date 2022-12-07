@@ -17,7 +17,6 @@ export default class AuthManagerService extends Service {
   init() {
     super.init(...arguments);
     let authService = this;
-    console.log("INIT")
     let data = $.get('/session/', function (response) {
       authService.username = response.data.username;
       authService.usergroup = response.data.usergroup;
@@ -25,7 +24,6 @@ export default class AuthManagerService extends Service {
       authService.isLoggedIn = response.data.isLoggedIn;
       console.log(authService.username);
     });
-    console.log(data);
   }
 
   // Post creds to the server

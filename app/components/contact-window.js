@@ -4,22 +4,43 @@ import { debug } from '@ember/debug';
 import { action } from '@ember/object';
 
 export default class ContactWindowComponent extends Component {
-  @tracked name = 'Enter your name';
-  @tracked email = 'Enter a valid email';
-  @tracked message = 'Enter a brief message';
+  @tracked name = '';
+  @tracked email = '';
+  @tracked message = '';
   @tracked send = 'Send';
+  @tracked good = false;
 
-  // JS Validation, Sanitization, and Escaping
+  // JS Validation, Sanitization for name
   @action
-  validateNames() {
-    m.value = m.value.replace(/[&*<>/';{}]/g, '');
-    n.value = n.value.replace(/[&*<>/';{}]/g, '');
-    e.value = e.value.replace(/[&*<>/';{}]/g, '');
+  validateName() {
+    n.value = n.value.replace(/[!@#$%^(<>?)&*<>/';{}1234567890]/g, '');
   }
 
+  // JS Validation, Sanitization for message
   @action
-  validateInput() {
-    console.log(e.value);
+  validateMessage() {
+    m.value = m.value.replace(/[@#%^&*<>/';{}]/g, '');
+  }
+
+  // JS Validation, Sanitization for email
+  @action
+  validateEmail() {
+    e.value = e.value.replace(/[&*<>/';{}]/g, '');
+    const atArray = e.value.split("@");
+    var atLength = atArray.length; //Must be 2
+    if(atLength == 2) {
+      const comArray = atArray[1].split(".com");
+      var comLength = comArray.length;
+      if(comLength == 2) {
+        this.good = true;
+      }
+    }
+    console.log(this.good);
+  }
+
+  get disableSubmit() {
+    //if either value is empty we don't want to allow submitting the form
+    return !this.name.length || !this.email.length || !this.message.length || this.good == false;
   }
 
   // Creates record for sending an email

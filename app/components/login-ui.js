@@ -8,8 +8,8 @@ import { router } from '@ember/service';
 export default class LoginUiComponent extends Component {
   @service authManager;
   @service router;
-  @tracked UserName = 'JohnLeader';
-  @tracked PassWord = 'P@ssw0rd12345';
+  @tracked UserName = '';
+  @tracked PassWord = '';
   @tracked remember = 0;
   @tracked anonStatus = true;
 

@@ -15,7 +15,7 @@
 
       <table id="contact-table">
         <tr>
-          <td>Name</td>
+          <td>Full Name</td>
           <td>
             <Input
               aria-label="name"
@@ -23,7 +23,7 @@
               @type="type"
               size = "30"
               @value={{this.name}}
-              {{on "input" this.validateNames}}
+              {{on "input" this.validateName}}
             />
           </td>
         </tr>
@@ -36,7 +36,7 @@
               @type="type"
               size = "30"
               @value={{this.email}}
-              {{on "input" this.validateNames}}
+              {{on "input" this.validateEmail}}
             />
           </td>
         </tr>
@@ -49,7 +49,7 @@
               @value={{this.message}}
               rows="12"
               cols="30"
-              {{on "input" this.validateNames}}
+              {{on "input" this.validateName}}
             />
           </td>
         </tr>
@@ -58,6 +58,7 @@
             <div id="submit-contact">
               <Input
                 aria-label="send"
+                disabled = {{this.disableSubmit}}
                 id = "s"
                 @type="submit"
                 @value={{this.send}}

@@ -22,7 +22,6 @@ export default class AuthManagerService extends Service {
       authService.usergroup = response.data.usergroup;
       authService.userid = response.data.userid;
       authService.isLoggedIn = response.data.isLoggedIn;
-      console.log(authService.username);
     });
   }
 
@@ -48,8 +47,6 @@ export default class AuthManagerService extends Service {
       type: 'DELETE',
       headers: { 'X-CSRFToken': csrftoken },
       success: function (response) {
-        console.log('RESPONSE');
-        console.log(response);
         authService.username = null;
         authService.usergroup = null;
         authService.userid = null;
@@ -61,8 +58,5 @@ export default class AuthManagerService extends Service {
 
   //Helper print function
   print() {
-    console.log('AUTH USERNAME: ' + this.username);
-    console.log('AUTH ID: ' + this.userid);
-    console.log('AUTH LOGGEDIN: ' + this.isLoggedIn);
   }
 }

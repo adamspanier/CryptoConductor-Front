@@ -3,6 +3,14 @@
 
 {{page-title "Scoring Dashboard"}}
 
-Scoring Dashboard Page
+  {{#if this.authManager.isLoggedIn}}
+
+    Scoring Dashboard Page
+
+  {{else}}
+
+    {{this.redirectToLogin}}
+
+  {{/if}}
 
 {{outlet}}

@@ -22,18 +22,28 @@ export default class ContactWindowComponent extends Component {
     m.value = m.value.replace(/[@#%^&*<>/';{}]/g, '');
   }
 
-  // JS Validation, Sanitization for email
+  // JS Validation, Sanitization for email input
   @action
   validateEmail() {
     e.value = e.value.replace(/[&*<>/';{}]/g, '');
     const atArray = e.value.split("@");
     var atLength = atArray.length; //Must be 2
     if(atLength == 2) {
-      const comArray = atArray[1].split(".com");
+      const comArray = atArray[1].split(".");
       var comLength = comArray.length;
       if(comLength == 2) {
-        this.good = true;
+        var domainLength = comArray[1].length;
+        if(domainLength > 1 && domainLength < 4) {
+          console.log(domainLength);
+          this.good = true;
+        } else {
+          this.good = false;
+        }
+      } else {
+        this.good = false;
       }
+    } else {
+      this.good = false;
     }
     console.log(this.good);
   }
